@@ -20,24 +20,23 @@
 // When the above HTML is ready append it to the <ul> element
 
 const showImages = () => {
-    const ul = document.querySelector('#thisList');
+    const ul = document.querySelector('ul');
 
     fetch('images.json')
         .then((response) => {
             return response.json();
         })
         .then((json) => {
-           // let html = '';
             json.forEach((image) => {
                 //put code here
-                let li = document.createElement("li");
-                let fig = document.createElement("figure");
-                let a = document.createElement("a");
-                let figcaption = document.createElement("figcaption");
-                let h3 = document.createElement("h3");
-                let img = document.createElement("img");
-                let ul = document.getElementById("thisList");
-                let headline = document.createTextNode(image.mediaTitle);
+                const li = document.createElement('li');
+                const figure = document.createElement('figure');
+                const a = document.createElement('a');
+                const figcaption = document.createElement('figcaption');
+                const h3 = document.createElement('h3');
+                const img = document.createElement('img');
+
+                const headline = document.createTextNode(image.mediaTitle);
 
                 h3.appendChild(headline);
                 figcaption.appendChild(h3);
@@ -46,10 +45,11 @@ const showImages = () => {
                 a.setAttribute('href', `img/original/${image.mediaUrl}`);
 
                 a.appendChild(img);
-                fig.appendChild(a);
-                fig.appendChild(figcaption);
-                li.appendChild(fig);
+                figure.appendChild(a);
+                figure.appendChild(figcaption);
+                li.appendChild(figure);
                 ul.appendChild(li);
+
             });
         });
 };
